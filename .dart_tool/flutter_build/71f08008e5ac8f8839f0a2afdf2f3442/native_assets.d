@@ -1,0 +1,1 @@
+ /Users/user/myQuran/.dart_tool/flutter_build/71f08008e5ac8f8839f0a2afdf2f3442/native_assets.yaml: 
