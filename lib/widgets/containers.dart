@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 
+
 import '../costants/text_style.dart';
 
 class ListContainer extends StatefulWidget {
@@ -9,7 +10,7 @@ class ListContainer extends StatefulWidget {
     required this.text1,
     required this.text2,
     required this.imagepath,
-     required onPressed,
+     required this.onPressed,
   }) : super(key: key);
 
   @override
@@ -21,12 +22,15 @@ void Function()? onPressed;
 }
 
 class _ListContainerState extends State<ListContainer> {
+  
+
+  
   @override
   Widget build(BuildContext context) {
+    
     return InkWell(
-      onTap: () => setState(() {
-  widget.onPressed?.call();
-}),
+     onTap: () => widget.onPressed?.call(),
+
 
       child: Card(
         color: const Color.fromARGB(66, 0, 187, 212),
