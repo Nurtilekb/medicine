@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 import '../costants/text_style.dart';
 
 class FavList extends StatefulWidget {
- const FavList({
+  const FavList({
     Key? key,
   }) : super(key: key);
 
@@ -44,7 +44,8 @@ class _KeepListState extends State<FavList> {
                             padding: const EdgeInsets.all(10),
                             child: Row(
                               children: [
-                                Image.asset(value.cardItem[index][2]),
+                                Image.asset(value.cardItem[index][2],
+                                    height: 90, width: 100, fit: BoxFit.cover),
                                 const SizedBox(width: 10),
                                 Expanded(
                                   child: Column(

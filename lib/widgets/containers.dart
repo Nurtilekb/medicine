@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 
 
@@ -47,7 +49,10 @@ class _ListContainerState extends State<ListContainer> {
               padding: const EdgeInsets.all(10),
               child: Row(
                 children: [
-                  Image.asset(widget.imagepath),
+                  Image.asset(widget.imagepath,
+                  height: 90,
+                  width: 100,
+                  fit:BoxFit.cover ),
                   const SizedBox(width: 10),
                   Expanded(
                     child: Column(

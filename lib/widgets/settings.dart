@@ -1,4 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+
+import '../ontapWidgets/descript_for_setting.dart';
 
 class SettingList extends StatelessWidget {
   const SettingList({super.key});
@@ -63,10 +67,13 @@ class SettinWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Navigator.push(context, MaterialPageRoute(builder:(context) => DescripSettings(),));
+      },
       child: Container(
         decoration:  const BoxDecoration(
-            color: Color.fromARGB(139, 255, 248, 225),
+         backgroundBlendMode:BlendMode.exclusion,
+            color: Color.fromARGB(175, 255, 248, 225),
             borderRadius: BorderRadius.all(Radius.circular(5)) ),
         height: 55,
         child: Row(
