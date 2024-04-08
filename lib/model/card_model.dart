@@ -21,5 +21,16 @@ void removeItemCard(int index){
   _cardItem.removeAt(index);
   notifyListeners();
 }
+ 
 
+}
+class ThemeModel extends ChangeNotifier {
+  bool _isDarkMode = false;
+
+  bool get isDarkMode => _isDarkMode;
+
+  void toggleTheme() {
+    _isDarkMode = !_isDarkMode;
+    notifyListeners();
+  }
 }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:medicine1/ontapWidgets/descrip_bolezn.dart';
 
 
 
@@ -8,12 +7,12 @@ import '../costants/text_style.dart';
 
 class ListContainer extends StatefulWidget {
   ListContainer({
-    Key? key,
+    super.key,
     required this.text1,
     required this.text2,
     required this.imagepath,
-     required this.onPressed,
-  }) : super(key: key);
+     required this.onPressed, required this.selectedIndex,
+  });
 
   @override
   State<ListContainer> createState() => _ListContainerState();
@@ -21,9 +20,11 @@ class ListContainer extends StatefulWidget {
   final String text2;
   final String imagepath;
 void Function()? onPressed;
+final int selectedIndex;
 }
 
 class _ListContainerState extends State<ListContainer> {
+
   
 
   
@@ -31,8 +32,11 @@ class _ListContainerState extends State<ListContainer> {
   Widget build(BuildContext context) {
     
     return InkWell(
-     onTap: () => widget.onPressed?.call(),
-
+    onTap: (){
+      Navigator.push(context, MaterialPageRoute(builder:(context) =>  Dopkaprobolez(  text1: widget.text1,
+              text2: widget.text2,
+              imagepath: widget.imagepath, selectedIndex: widget.selectedIndex,),));
+    },
 
       child: Card(
         color: const Color.fromARGB(66, 0, 187, 212),
@@ -71,6 +75,9 @@ class _ListContainerState extends State<ListContainer> {
                       ],
                     ),
                   ),
+                  IconButton(onPressed:widget.onPressed,
+                  
+ icon: const Icon(Icons.star))
                 ],
               ),
             ),
@@ -80,3 +87,5 @@ class _ListContainerState extends State<ListContainer> {
     );
   }
 }
+
+            

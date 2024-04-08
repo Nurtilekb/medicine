@@ -1,26 +1,50 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:medicine1/costants/text_style.dart';
+import 'package:provider/provider.dart';
+
+import 'package:medicine1/model/card_model.dart';
 
 class Dopkaprobolez extends StatelessWidget {
-  const Dopkaprobolez({super.key});
+   const Dopkaprobolez({
+    super.key,
+    required this.selectedIndex,
+    required this.text1,
+    required this.text2,
+    required this.imagepath,
+  });
 
+  final int selectedIndex;
+ final String text1;
+  final String text2;
+  final String imagepath;
   @override
   Widget build(BuildContext context) {
+    final CardModel cardModel = Provider.of<CardModel>(context);
+
+    final String text1 = cardModel.spisok[selectedIndex][0];
+    final String text2 = cardModel.spisok[selectedIndex][1];
+    final String imagepath = cardModel.spisok[selectedIndex][2];
+
     return Scaffold(
-      body: SafeArea(
+      appBar: AppBar(title: Text(text1,style: ConstStyle.nazvonke,),),
+      body: Padding(
+        padding: const EdgeInsets.all(10.0),
         child: ListView(
           children: [
-            const Text('                              Все ваши избранные'),
-            Card(
-                child: SizedBox(
-              height: 120,
+            Image.asset(
+                fit:BoxFit.cover,
+              imagepath,
               width: MediaQuery.of(context).size.width,
-              child:  const Text('data'),
-            )),
-            Align(child: FloatingActionButton(onPressed: (){Navigator.pop(context);},child:const Icon(Icons.arrow_back) ,),)
+              height: 250.h,
+              
+
+            ),
+            
+            Text(text2,style:const TextStyle(fontSize: 20),),
           ],
         ),
       ),
     );
-   
   }
 }
