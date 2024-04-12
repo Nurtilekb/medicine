@@ -1,0 +1,16 @@
+{
+  "@@locale": "en",
+  "appTitle": "Flutter i18nnnn",
+  "@appTitle": {
+    "description": "Main application title"
+  },
+  "hintText":" Search",
+  "home1":"Home",
+  "favorites":"Favorites",
+  "articles":"Articles",
+  "settings":"settings",
+  "language":"Application language",
+  "theme":"Theme",
+  "snakbartitle1":"You have added to Favorites",
+  "snakbartitle2":"You have been removed from Favorites"
+}

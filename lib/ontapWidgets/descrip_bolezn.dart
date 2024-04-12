@@ -32,15 +32,23 @@ class Dopkaprobolez extends StatelessWidget {
         padding: const EdgeInsets.all(10.0),
         child: ListView(
           children: [
-            Image.asset(
-                fit:BoxFit.cover,
-              imagepath,
+            Container(
               width: MediaQuery.of(context).size.width,
-              height: 250.h,
-              
-
+                height: 250.h,
+              decoration: BoxDecoration(borderRadius: const BorderRadius.all(Radius.circular(8)),
+              border: Border.all(width: 2)),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(6),
+                child: Image.asset(
+                    fit: BoxFit.cover,
+                  imagepath,
+                  
+                  
+                
+                ),
+              ),
             ),
-            
+            const SizedBox(height: 30),
             Text(text2,style:const TextStyle(fontSize: 20),),
           ],
         ),

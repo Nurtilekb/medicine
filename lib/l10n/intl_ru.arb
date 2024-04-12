@@ -1,0 +1,13 @@
+{
+  "@@locale": "ru",
+  "appTitle": "Flutter i18n",
+  "hintText":" Поиск",
+  "home1":"Дом",
+  "favorites":"Сохраненные",
+  "articles":"Статьи",
+  "settings":"Настройки",
+  "language":"Язык приложения",
+  "theme":"Тема",
+  "snakbartitle1":"Вы добавили в Избранные",
+  "snakbartitle2":"Вы удалили из Избранных"
+  }

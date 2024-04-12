@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:medicine1/ontapWidgets/descrip_bolezn.dart';
 
-
-
 import '../costants/text_style.dart';
 
+// ignore: must_be_immutable
 class ListContainer extends StatefulWidget {
   ListContainer({
     super.key,
     required this.text1,
     required this.text2,
     required this.imagepath,
-     required this.onPressed, required this.selectedIndex,
+    required this.onPressed,
+    required this.selectedIndex,
   });
 
   @override
@@ -19,25 +19,26 @@ class ListContainer extends StatefulWidget {
   final String text1;
   final String text2;
   final String imagepath;
-void Function()? onPressed;
-final int selectedIndex;
+  void Function()? onPressed;
+  final int selectedIndex;
 }
 
 class _ListContainerState extends State<ListContainer> {
-
-  
-
-  
   @override
   Widget build(BuildContext context) {
-    
     return InkWell(
-    onTap: (){
-      Navigator.push(context, MaterialPageRoute(builder:(context) =>  Dopkaprobolez(  text1: widget.text1,
-              text2: widget.text2,
-              imagepath: widget.imagepath, selectedIndex: widget.selectedIndex,),));
-    },
-
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => Dopkaprobolez(
+                text1: widget.text1,
+                text2: widget.text2,
+                imagepath: widget.imagepath,
+                selectedIndex: widget.selectedIndex,
+              ),
+            ));
+      },
       child: Card(
         color: const Color.fromARGB(66, 0, 187, 212),
         elevation: 1,
@@ -54,9 +55,7 @@ class _ListContainerState extends State<ListContainer> {
               child: Row(
                 children: [
                   Image.asset(widget.imagepath,
-                  height: 90,
-                  width: 100,
-                  fit:BoxFit.cover ),
+                      height: 90, width: 100, fit: BoxFit.cover),
                   const SizedBox(width: 10),
                   Expanded(
                     child: Column(
@@ -75,9 +74,8 @@ class _ListContainerState extends State<ListContainer> {
                       ],
                     ),
                   ),
-                  IconButton(onPressed:widget.onPressed,
-                  
- icon: const Icon(Icons.star))
+                  IconButton(
+                      onPressed: widget.onPressed, icon: const Icon(Icons.star))
                 ],
               ),
             ),
@@ -87,5 +85,3 @@ class _ListContainerState extends State<ListContainer> {
     );
   }
 }
-
-            

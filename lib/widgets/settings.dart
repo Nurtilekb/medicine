@@ -1,9 +1,13 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:medicine1/app/providers/locale_providers.dart';
 import 'package:medicine1/costants/text_style.dart';
 import 'package:provider/provider.dart';
 
 import '../model/card_model.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class SettingList extends StatefulWidget {
  const  SettingList({Key? key});
@@ -34,21 +38,19 @@ class _SettingListState extends State<SettingList> {
               Container(
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
-                  color:   Color.fromARGB(185, 85, 83, 79),
+                  color:   const Color.fromARGB(185, 85, 83, 79),
                   borderRadius: BorderRadius.circular(16),
                 ),
-                height: 100.h,
-                child:  const Padding(
-                  padding: EdgeInsets.all(8.0),
+                height: 125.h,
+                child:   Padding(
+                  padding: const EdgeInsets.all(8.0),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        'Язык приложения',style: ConstStyle.settingstyle,
-                      ),
-                      Divider(color: Colors.black26),
-                      Row(
+                     Text(AppLocalizations.of(context)!.language,style: ConstStyle.settingstyle,),
+                      const Divider(color: Colors.black26),
+                      const Row(
                         children: [
                                          DropdownButtonExample(),
                          
@@ -63,7 +65,7 @@ class _SettingListState extends State<SettingList> {
                 width: MediaQuery.of(context).size.width,
                 height: 50,
                 decoration: BoxDecoration(
-                  color: Color.fromARGB(185, 85, 83, 79),
+                  color: const Color.fromARGB(185, 85, 83, 79),
                   borderRadius: BorderRadius.circular(16),
                 ),
                 child: Padding(
@@ -71,7 +73,7 @@ class _SettingListState extends State<SettingList> {
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                     const Expanded(child: Text('Измените тему на черную',style: ConstStyle.settingstyle,)),
+                      Expanded(child: Text(AppLocalizations.of(context)!.theme,style: ConstStyle.settingstyle,)),
                      Switch( value: themeProvider.isDarkMode,
               onChanged: (value) {
                 themeProvider.toggleTheme();
@@ -104,7 +106,15 @@ class DropdownButtonExample extends StatefulWidget {
 }bool isDarkMode = true;
  List<String> list = <String>['Русский', 'English', 'Turkçe', 'Кыргызча'];
 class _DropdownButtonExampleState extends State<DropdownButtonExample> {
+ void englishche(){setState(() {
+    Provider.of<LocaleProvider>(context,listen: false).setLocale(const Locale('en'));
+     
+ });
  
+  
+  
+ }
+
   String dropdownValue = list.first;
 
   @override
@@ -127,6 +137,21 @@ class _DropdownButtonExampleState extends State<DropdownButtonExample> {
       onChanged: (String? value) {
         setState(() {
           dropdownValue = value!;
+         switch (dropdownValue) {
+            case 'Русский':
+             russcha();
+              break;
+            case 'English':
+            englishche();
+              break;
+            case 'Turkçe':
+          
+              break;
+            case 'Кыргызча':
+            
+              break;
+          }
+                
         });
       },
       items: list.map<DropdownMenuItem<String>>((String value) {
@@ -138,5 +163,12 @@ class _DropdownButtonExampleState extends State<DropdownButtonExample> {
       }).toList(),
     );
   }
+  
+  void russcha() {setState(() {
+    Provider.of<LocaleProvider>(context,listen: false).setLocale(const Locale('ru'));
+  });
+ 
+ 
+  
 }
-
+}
