@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:medicine1/model/card_model.dart';
 import 'package:medicine1/widgets/containers.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import '../model/them_model.dart';
 import 'search_tme.dart';
 import 'settings.dart';
 
@@ -16,18 +16,16 @@ class ListTabview extends StatefulWidget {
 }
 
 class _ListTabviewState extends State<ListTabview> {
-  
+  // final  List<List<String>> results = [];
   @override
   Widget build(BuildContext context) {
-   var snackBar = SnackBar(
-                    content: Text(AppLocalizations.of(context)!.snakbartitle1)
-                  );
+    var snackBar =
+        SnackBar(content: Text(AppLocalizations.of(context)!.snakbartitle1));
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 65.h,
         actions: [
-          IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
-          SizedBox(width: 10.w,)
+          SizedBox(width: 10.w),
         ],
         backgroundColor: isDarkMode ? Colors.blueGrey : Colors.blueGrey[200],
         title: const SearchBar1(),
@@ -35,20 +33,23 @@ class _ListTabviewState extends State<ListTabview> {
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 6.w),
         child: Consumer<CardModel>(
-          builder: (context, value, child) {
+          builder: (context, cardModel, child) {
+            final List<List<String>> displayList = cardModel.spisok;
             return ListView.builder(
-              itemCount: value.spisok.length,
+              itemCount: displayList.length,
               itemBuilder: (context, index) {
+                final card = displayList[index];
                 return ListContainer(
-                  text1: value.spisok[index][0],
-                  text2: value.spisok[index][1],
-                  imagepath: value.spisok[index][2],
+                  text1: card[0],
+                  text2: card[1],
+                  imagepath: card[2],
                   onPressed: () {
                     Provider.of<CardModel>(context, listen: false)
                         .addItemtoCard(index);
-                     snackBar ;
-        
-                    ScaffoldMessenger.of(context).showSnackBar(  snackBar);
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      content:
+                          Text(AppLocalizations.of(context)!.snakbartitle1),
+                    ));
                   },
                   selectedIndex: index,
                 );

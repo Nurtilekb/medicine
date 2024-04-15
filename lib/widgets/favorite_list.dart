@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:medicine1/model/card_model.dart';
 import 'package:medicine1/ontapWidgets/descrip_bolezn.dart';
 import 'package:medicine1/widgets/settings.dart';
 import 'package:provider/provider.dart';
 
 import '../costants/text_style.dart';
+import '../model/them_model.dart';
 import 'search_tme.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class FavList extends StatefulWidget {
@@ -47,11 +47,12 @@ class _FavListState extends State<FavList> {
                   children: [
                     InkWell(
                       onTap: () {
+                        
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const Dopkaprobolez(
-                                selectedIndex: 1,
+                              builder: (context) =>  Dopkaprobolez(
+                                selectedIndex: index,
                                 text1: '',
                                 imagepath: '',
                                 text2: '',
@@ -74,7 +75,7 @@ class _FavListState extends State<FavList> {
                                 padding: const EdgeInsets.all(10),
                                 child: Row(
                                   children: [
-                                    Image.asset(value.cardItem[index][2],
+                                     Image.asset(value.cardItem[index][2],
                                         height: 90, width: 100, fit: BoxFit.cover),
                                     const SizedBox(width: 10),
                                     Expanded(

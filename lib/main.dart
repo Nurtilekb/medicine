@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medicine1/app/providers/locale_providers.dart';
-import 'package:medicine1/model/card_model.dart';
+import 'package:medicine1/model/them_model.dart';
 
 import 'package:medicine1/widgets/favorite_list.dart';
 import 'package:medicine1/widgets/listview_bld.dart';
@@ -10,23 +10,16 @@ import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-void main() async{
-   WidgetsFlutterBinding.ensureInitialized();
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences prefs = await SharedPreferences.getInstance();
-  
+
   runApp(MultiProvider(providers: [
-     ChangeNotifierProvider(
-              create: (BuildContext context) => ThemeModel()),
-          ChangeNotifierProvider(create: (BuildContext context) => CardModel()),
-          ChangeNotifierProvider(
-              create: (BuildContext context) => LocaleProvider()),
-  ],
-  child: const MyApp()));
+    ChangeNotifierProvider(create: (BuildContext context) => ThemeModel()),
+    ChangeNotifierProvider(create: (BuildContext context) => CardModel()..filterData('')),
+    ChangeNotifierProvider(create: (BuildContext context) => LocaleProvider()),
+  ], child: const MyApp()));
 }
-
- 
-
-
 
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -34,16 +27,14 @@ class MyApp extends StatefulWidget {
   @override
   State<MyApp> createState() => _MyAppState();
 }
+
 @override
-
-
 class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
   var _selectedIndex = 0;
-@override
+  @override
   void initState() {
     super.initState();
-    // Загрузка данных при инициализации
-    WidgetsBinding.instance!.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       Provider.of<LocaleProvider>(context, listen: false).loadLocale();
       Provider.of<ThemeModel>(context, listen: false).loadTheme();
       Provider.of<CardModel>(context, listen: false).loadData();
@@ -63,16 +54,15 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
             localizationsDelegates: AppLocalizations.localizationsDelegates,
             supportedLocales: AppLocalizations.supportedLocales,
             locale: Provider.of<LocaleProvider>(context).locale,
-            theme: themeModel.isDarkMode
-                ? ThemeData.dark()
-                : ThemeData.light(),
+            theme: themeModel.isDarkMode ? ThemeData.dark() : ThemeData.light(),
             home: Scaffold(
-              bottomNavigationBar:  NavBarr(selectedIndex: _selectedIndex, onitemtap: (index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-          },
-                
+              bottomNavigationBar: NavBarr(
+                selectedIndex: _selectedIndex,
+                onitemtap: (index) {
+                  setState(() {
+                    _selectedIndex = index;
+                  });
+                },
               ),
               body: IndexedStack(
                 index: _selectedIndex,
@@ -92,10 +82,11 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
 }
 
 class NavBarr extends StatefulWidget {
-  const NavBarr({super.key, required this.selectedIndex, required this.onitemtap});
+  const NavBarr(
+      {super.key, required this.selectedIndex, required this.onitemtap});
 
   @override
-  State<NavBarr> createState() =>  _NavBarrState();
+  State<NavBarr> createState() => _NavBarrState();
   final int selectedIndex;
   final Function(int) onitemtap;
 }

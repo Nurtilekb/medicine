@@ -5,7 +5,7 @@ import 'package:medicine1/app/providers/locale_providers.dart';
 import 'package:medicine1/costants/text_style.dart';
 import 'package:provider/provider.dart';
 
-import '../model/card_model.dart';
+import '../model/them_model.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 

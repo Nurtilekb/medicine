@@ -1,1 +1,0 @@
- /Users/user/medicine1/.dart_tool/flutter_gen/gen_l10n/app_localizations_en.dart /Users/user/medicine1/.dart_tool/flutter_gen/gen_l10n/app_localizations_ru.dart /Users/user/medicine1/.dart_tool/flutter_gen/gen_l10n/app_localizations.dart:  /Users/user/medicine1/l10n.yaml /Users/user/medicine1/lib/l10n/intl_en.arb /Users/user/medicine1/lib/l10n/intl_ru.arb

@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medicine1/costants/text_style.dart';
 import 'package:provider/provider.dart';
-
-import 'package:medicine1/model/card_model.dart';
+import '../model/them_model.dart';
 
 class Dopkaprobolez extends StatelessWidget {
    const Dopkaprobolez({
