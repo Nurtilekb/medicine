@@ -32,5 +32,30 @@ class LocaleProvider extends ChangeNotifier {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setString('languageCode', languageCode);
   }
+
+
+Future<void> selectedLanguage(String selectedlang) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString('selectedlanguage', selectedlang);
+    notifyListeners();
+  }
+  /*Future <void> getlang(String selectedlang)async{
+     SharedPreferences prefs = await SharedPreferences.getInstance();
+     String? selectedlang=prefs.getString('selectedlanguage');
+     
+     notifyListeners();
+  }
+  Future<void> setLocale2(String selectedlang) async {
+String _selectedlang='selectedlanguage';
+selectedlang=_selectedlang;
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  await prefs.setString('selectedlanguage', selectedlang);
+  
+  
+  await getlang(selectedlang);
+
+  notifyListeners();
+}*/
+
 }
 

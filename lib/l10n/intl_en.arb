@@ -4,7 +4,7 @@
   "@appTitle": {
     "description": "Main application title"
   },
-  "hintText":" Search",
+  "hintText":" Search...",
   "home1":"Home",
   "favorites":"Favorites",
   "articles":"Articles",

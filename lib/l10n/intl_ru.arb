@@ -1,7 +1,7 @@
 {
   "@@locale": "ru",
   "appTitle": "Flutter i18n",
-  "hintText":" Поиск",
+  "hintText":" Поиск...",
   "home1":"Дом",
   "favorites":"Сохраненные",
   "articles":"Статьи",

@@ -10,14 +10,17 @@ import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'model/card_model.dart';
+import 'widgets/articles_list.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences prefs = await SharedPreferences.getInstance();
 
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(create: (BuildContext context) => ThemeModel()),
-    ChangeNotifierProvider(create: (BuildContext context) => CardModel()..filterData('')),
     ChangeNotifierProvider(create: (BuildContext context) => LocaleProvider()),
+     ChangeNotifierProvider(create: (BuildContext context) => Listbeck()..filterData('keyword')),
   ], child: const MyApp()));
 }
 
@@ -37,7 +40,7 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       Provider.of<LocaleProvider>(context, listen: false).loadLocale();
       Provider.of<ThemeModel>(context, listen: false).loadTheme();
-      Provider.of<CardModel>(context, listen: false).loadData();
+       Provider.of<Listbeck>(context, listen: false).loadData();
     });
   }
 
@@ -69,7 +72,7 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
                 children: const [
                   ListTabview(),
                   FavList(),
-                  Center(),
+                 ArcticList(),
                   SettingList(),
                 ],
               ),
@@ -80,6 +83,7 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
     );
   }
 }
+
 
 class NavBarr extends StatefulWidget {
   const NavBarr(
@@ -97,7 +101,7 @@ class _NavBarrState extends State<NavBarr> {
     return BottomNavigationBar(
       type: BottomNavigationBarType.fixed,
       fixedColor: Colors.black,
-      backgroundColor: isDarkMode ? Colors.blueGrey : Colors.blueGrey[200],
+      backgroundColor: Provider.of<ThemeModel>(context).toolColor,
       currentIndex: widget.selectedIndex,
       onTap: widget.onitemtap,
       items: <BottomNavigationBarItem>[

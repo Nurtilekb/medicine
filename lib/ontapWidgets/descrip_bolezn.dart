@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:medicine1/costants/text_style.dart';
-import 'package:provider/provider.dart';
-import '../model/them_model.dart';
+
+
 
 class Dopkaprobolez extends StatelessWidget {
-   const Dopkaprobolez({
-    super.key,
+  const Dopkaprobolez({
+    Key? key,
     required this.selectedIndex,
     required this.text1,
     required this.text2,
-    required this.imagepath,
-  });
+    required this.imagepath, 
+  }) : super(key: key);
 
   final int selectedIndex;
  final String text1;
@@ -19,11 +20,8 @@ class Dopkaprobolez extends StatelessWidget {
   final String imagepath;
   @override
   Widget build(BuildContext context) {
-    final CardModel cardModel = Provider.of<CardModel>(context);
 
-    final String text1 = cardModel.spisok[selectedIndex][0];
-    final String text2 = cardModel.spisok[selectedIndex][1];
-    final String imagepath = cardModel.spisok[selectedIndex][2];
+   
 
     return Scaffold(
       appBar: AppBar(title: Text(text1,style: ConstStyle.nazvonke,),),

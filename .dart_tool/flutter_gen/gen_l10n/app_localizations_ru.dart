@@ -8,7 +8,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get appTitle => 'Flutter i18n';
 
   @override
-  String get hintText => ' Поиск';
+  String get hintText => ' Поиск...';
 
   @override
   String get home1 => 'Дом';

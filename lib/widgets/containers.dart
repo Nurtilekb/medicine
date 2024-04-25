@@ -42,7 +42,7 @@ class _ListContainerState extends State<ListContainer> {
             ));
       },
       child: Card(
-        color: const Color.fromARGB(66, 0, 187, 212),
+        color: const Color.fromARGB(255, 100, 219, 193),
         elevation: 1,
         shape: RoundedRectangleBorder(
           side: const BorderSide(color: Colors.black),

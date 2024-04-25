@@ -1,0 +1,14 @@
+{
+  "@@locale": "ky",
+   "appTitle": "Flutter i18n",
+  "hintText":" Издөө...",
+  "home1":"Үй",
+  "favorites":"Сакталгандар",
+  "articles":"Макалалар",
+  "settings":"Орнотуулар",
+  "language":"Колдонмо тили",
+  "theme":"Тема",
+  "snakbartitle1":"Сиз Сакталгандарга коштуңуз",
+  "snakbartitle2":"Сиз Сакталгандардан чыгардыңыз"
+  }
+  

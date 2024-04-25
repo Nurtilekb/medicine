@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:medicine1/widgets/containers.dart';
+import 'package:medicine1/model/them_model.dart';
+import 'package:medicine1/ontapWidgets/descrip_bolezn.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../model/them_model.dart';
+import '../costants/text_style.dart';
+import '../model/card_model.dart';
 import 'search_tme.dart';
-import 'settings.dart';
 
 class ListTabview extends StatefulWidget {
   const ListTabview({super.key});
@@ -16,48 +17,106 @@ class ListTabview extends StatefulWidget {
 }
 
 class _ListTabviewState extends State<ListTabview> {
-  // final  List<List<String>> results = [];
+
   @override
   Widget build(BuildContext context) {
-    var snackBar =
-        SnackBar(content: Text(AppLocalizations.of(context)!.snakbartitle1));
+   final themprov=Provider.of<ThemeModel>(context);
+   final  pr=Provider.of<Listbeck>(context).mymodel;
+    final snackBar =
+        SnackBar(content: Text(AppLocalizations.of(context)!.snakbartitle1),);
+      
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 65.h,
         actions: [
           SizedBox(width: 10.w),
         ],
-        backgroundColor: isDarkMode ? Colors.blueGrey : Colors.blueGrey[200],
-        title: const SearchBar1(),
+        backgroundColor: themprov.toolColor,
+        title:   SearchBar1(onTextChanged: _runFilter,),
       ),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 6.w),
-        child: Consumer<CardModel>(
-          builder: (context, cardModel, child) {
-            final List<List<String>> displayList = cardModel.spisok;
-            return ListView.builder(
-              itemCount: displayList.length,
-              itemBuilder: (context, index) {
-                final card = displayList[index];
-                return ListContainer(
-                  text1: card[0],
-                  text2: card[1],
-                  imagepath: card[2],
-                  onPressed: () {
-                    Provider.of<CardModel>(context, listen: false)
-                        .addItemtoCard(index);
-                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      content:
-                          Text(AppLocalizations.of(context)!.snakbartitle1),
-                    ));
-                  },
-                  selectedIndex: index,
-                );
-              },
-            );
-          },
-        ),
-      ),
+          padding: EdgeInsets.symmetric(horizontal: 6.w),
+          child: ListView.builder(
+            itemCount: pr.length,
+            itemBuilder: (BuildContext context, int index) {
+              final item = pr[index];
+              return Column(children: [
+                InkWell( onTap: (){   
+                  Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Dopkaprobolez(
+                                text1: item.glavtext,
+                                imagepath: item.imagePath,
+                                text2: item.doptext,
+                                selectedIndex: index,
+                              ),
+                            ));},
+                  child: Card(
+                      color: Provider.of<ThemeModel>(context).cardColor,
+                        elevation: 1,
+                        shape: RoundedRectangleBorder(
+                          side: const BorderSide(color: Colors.black),
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                      key: Key(item
+                          .id), 
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Container(
+                              width: 200,
+                              height: 100,
+                              padding: const EdgeInsets.all(10),
+                              child: Row(
+                                children: [
+                                  Image.asset(item.imagePath,
+                                      height: 90, width: 100, fit: BoxFit.cover),
+                                  const SizedBox(width: 10),
+                                  Expanded(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          item.glavtext,
+                                          style: ConstStyle.nazvbolez,
+                                          maxLines: 1,
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                        Text(
+                                          item.doptext,
+                                          style: ConstStyle.descripbolez,
+                                          overflow: TextOverflow.ellipsis,
+                                          maxLines: 2,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                       IconButton(
+                                onPressed: () {
+                                  Provider.of<Listbeck>(context, listen: false)
+                                      .addToFavorites(index);
+
+                                  ScaffoldMessenger.of(context)
+                                      .showSnackBar(snackBar);
+                                },
+                                icon: const Icon(Icons.star)) ],
+                      )),
+                )
+              ]);
+            },
+          )),
     );
+    
+  }void _runFilter(String keyword) {
+
+      Provider.of<Listbeck>(context, listen: false).filterData(keyword);
+
+
   }
 }

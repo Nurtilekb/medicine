@@ -8,7 +8,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get appTitle => 'Flutter i18nnnn';
 
   @override
-  String get hintText => ' Search';
+  String get hintText => ' Search...';
 
   @override
   String get home1 => 'Home';
