@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medicine1/app/providers/locale_providers.dart';
 import 'package:medicine1/costants/text_style.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../model/them_model.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -98,11 +99,24 @@ class DropdownButtonExample extends StatefulWidget {
   State<DropdownButtonExample> createState() => _DropdownButtonExampleState();
 }
 
-List<String> list = <String>["Русский" ,];
+List<String> list = <String>["Русский" ,'English','Кыргызча'];
 
 class _DropdownButtonExampleState extends State<DropdownButtonExample> {
         String dropdownValue=list.first;
 
+        void loadlang()async{
+     SharedPreferences prefs = await SharedPreferences.getInstance();
+  dropdownValue=prefs.getString('language') ?? 'Русский';
+
+  }
+@override
+void initState() {
+    super.initState();
+   loadlang();
+   setState(() {
+     
+   });
+  }
   @override
   Widget build(BuildContext context) {
 
@@ -125,7 +139,7 @@ class _DropdownButtonExampleState extends State<DropdownButtonExample> {
 
        
           dropdownValue = value!;
-          Provider.of<LocaleProvider>(context,listen: false).selectedLanguage(value);
+          
          switch (
 dropdownValue         ) {
             case 'Русский':
@@ -152,24 +166,30 @@ dropdownValue         ) {
     );
   }
 
-  void russcha() {
+  Future<void> russcha()  async {sohr();
     setState(() {
       Provider.of<LocaleProvider>(context, listen: false)
           .setLocale(const Locale('ru'));
     });
   }
 
-  void kyrgyzcha() {
+  Future<void> kyrgyzcha() async {
+    sohr();
     setState(() {
       Provider.of<LocaleProvider>(context, listen: false)
           .setLocale(const Locale('ky'));
     });
   }
-  void englishche() {
+  Future<void> englishche() async {
+   sohr();
     setState(() {
       Provider.of<LocaleProvider>(context, listen: false)
           .setLocale(const Locale('en'));
     });
   }
- 
+Future<void> sohr() async {
+   SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString('language', dropdownValue);
+}
+  
 }
