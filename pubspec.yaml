@@ -42,6 +42,7 @@ dependencies:
   intl: any
   shared_preferences: ^2.2.2
   search_page: ^2.3.0
+  dropdown_button2: ^2.3.9
   
 
 dev_dependencies:

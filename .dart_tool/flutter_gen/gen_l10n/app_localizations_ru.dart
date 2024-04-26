@@ -29,8 +29,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get theme => 'Тема';
 
   @override
-  String get snakbartitle1 => 'Вы добавили в Избранные';
+  String get snakbartitle1 => 'Вы добавили в Сохраненные';
 
   @override
-  String get snakbartitle2 => 'Вы удалили из Избранных';
+  String get snakbartitle2 => 'Вы удалили из Сохраненных';
 }

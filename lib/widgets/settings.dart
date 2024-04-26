@@ -1,3 +1,4 @@
+import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medicine1/app/providers/locale_providers.dart';
@@ -31,7 +32,7 @@ class _SettingListState extends State<SettingList> {
             Container(
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
-                border: Border.all(width: 1,color: Colors.black45),
+                border: Border.all(width: 1, color: Colors.black45),
                 color: themeProvider.setingsColor,
                 borderRadius: BorderRadius.circular(16),
               ),
@@ -61,8 +62,8 @@ class _SettingListState extends State<SettingList> {
               width: MediaQuery.of(context).size.width,
               height: 50,
               decoration: BoxDecoration(
-                border: Border.all(width: 1,color: Colors.black45),
-             color:    Provider.of<ThemeModel>(context).setingsColor,
+                border: Border.all(width: 1, color: Colors.black45),
+                color: Provider.of<ThemeModel>(context).setingsColor,
                 borderRadius: BorderRadius.circular(16),
               ),
               child: Padding(
@@ -92,6 +93,58 @@ class _SettingListState extends State<SettingList> {
   }
 }
 
+
+
+
+List<DropdownMenuItem<String>> _addDividersAfterItems(List<String> list) {
+  final List<DropdownMenuItem<String>> menuItems = [];
+  for (final String item in list) {
+    menuItems.addAll(
+      [
+        DropdownMenuItem<String>(
+          value: item,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 4.0),
+            child: Text(
+              item,
+              style: const TextStyle(
+                fontSize: 16,
+              ),
+            ),
+          ),
+        ),
+        //If it's last item, we will not add Divider after it.
+        if (item != list.last)
+          const DropdownMenuItem<String>(
+            enabled: false,
+            child: Divider(),
+          ),
+      ],
+    );
+  }
+  return menuItems;
+}
+
+List<double> _getCustomItemsHeights() {
+  final List<double> itemsHeights = [];
+  for (int i = 0; i < (list.length * 2) - 1; i++) {
+    if (i.isEven) {
+      itemsHeights.add(40);
+    }
+    //Dividers indexes will be the odd indexes
+    if (i.isOdd) {
+      itemsHeights.add(4);
+    }
+  }
+  return itemsHeights;
+}
+
+
+
+
+
+
+
 class DropdownButtonExample extends StatefulWidget {
   const DropdownButtonExample({super.key});
 
@@ -99,49 +152,35 @@ class DropdownButtonExample extends StatefulWidget {
   State<DropdownButtonExample> createState() => _DropdownButtonExampleState();
 }
 
-List<String> list = <String>["Русский" ,'English','Кыргызча'];
+List<String> list = <String>["Русский", 'English', 'Кыргызча'];
 
 class _DropdownButtonExampleState extends State<DropdownButtonExample> {
-        String dropdownValue=list.first;
+  String selectedValue = 'English';
 
-        void loadlang()async{
-     SharedPreferences prefs = await SharedPreferences.getInstance();
-  dropdownValue=prefs.getString('language') ?? 'Русский';
-
+  void loadlang() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    selectedValue = prefs.getString('language') ?? 'Русский';
   }
-@override
-void initState() {
+
+  @override
+  void initState() {
     super.initState();
-   loadlang();
-   setState(() {
-     
-   });
+    loadlang();
+    setState(() {});
   }
+
   @override
   Widget build(BuildContext context) {
-
-
-
-    return DropdownButton<String>(
-      alignment: Alignment.center,
-      value: dropdownValue,
-      icon: const Icon(
-        Icons.arrow_drop_down_sharp,
-      ),
-      elevation: 16,
-      style: TextStyle(
-          color: Theme.of(context).textTheme.bodyLarge?.color,
-          fontSize: 16,
-          fontWeight: FontWeight.w500),
-      underline: Container(height: 2, color: Colors.black38),
-      onChanged: (String? value) {
-      
-
-       
-          dropdownValue = value!;
-          
-         switch (
-dropdownValue         ) {
+    return DropdownButtonHideUnderline(
+        child: DropdownButton2<String>(
+          isExpanded: true,
+          items: _addDividersAfterItems(list),
+          value: selectedValue,
+          onChanged: (String? value) {
+            setState(() {
+              selectedValue = value!;
+              switch (
+selectedValue         ) {
             case 'Русский':
               russcha();
               
@@ -154,19 +193,30 @@ dropdownValue         ) {
               kyrgyzcha();
               break;
           }
-        
-      },
-      items: list.map<DropdownMenuItem<String>>((String value) {
-        return DropdownMenuItem<String>(
-          alignment: Alignment.centerLeft,
-          value:value,
-          child: Text(value),
-        );
-      }).toList(),
-    );
+
+            });
+          },
+          buttonStyleData: const ButtonStyleData(
+            padding: EdgeInsets.symmetric(horizontal: 6),
+            height: 40,
+            width: 150,
+          ),
+          dropdownStyleData: const DropdownStyleData(
+            maxHeight: 200,
+          ),
+          menuItemStyleData: MenuItemStyleData(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            customHeights: _getCustomItemsHeights(),
+          ),
+          iconStyleData: const IconStyleData(
+            openMenuIcon: Icon(Icons.arrow_drop_up),
+          ),
+        ),
+      );
   }
 
-  Future<void> russcha()  async {sohr();
+  Future<void> russcha() async {
+    sohr();
     setState(() {
       Provider.of<LocaleProvider>(context, listen: false)
           .setLocale(const Locale('ru'));
@@ -180,16 +230,17 @@ dropdownValue         ) {
           .setLocale(const Locale('ky'));
     });
   }
+
   Future<void> englishche() async {
-   sohr();
+    sohr();
     setState(() {
       Provider.of<LocaleProvider>(context, listen: false)
           .setLocale(const Locale('en'));
     });
   }
-Future<void> sohr() async {
-   SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setString('language', dropdownValue);
-}
-  
+
+  Future<void> sohr() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString('language', selectedValue);
+  }
 }

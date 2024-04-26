@@ -172,21 +172,4 @@ List<ListModel> _mymodel = [
           'blablaqcdqwqrewvcjerfckmqlewkxlablablablablablablablablablablablabla',
       imagePath: 'assets/images/rakkkk.jpg'),
 ];
-/*Set<int> usedIndexes = {};
 
-int generateUniqueIndex() {
-  int index;
-  do {
-    index = Random().nextInt(100); // Сгенерируйте случайный индекс
-  } while (usedIndexes.contains(index)); // Проверьте, является ли индекс уникальным
-  usedIndexes.add(index); // Добавьте использованный индекс в множество
-  return index;
-}
-Map<String, int> itemIndexes = {
-  'item1': 0,
-  'item2': 1,
-  'item3': 2,
-  'item4': 4
-  ,
-  
-};*/
