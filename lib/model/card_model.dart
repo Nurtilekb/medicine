@@ -83,7 +83,7 @@ class Listbeck extends ChangeNotifier {
         }
         if (isContained) {
           _filteredData.add(_mymodel[i]);
-        }
+s        }
       }
     }
     notifyListeners();
