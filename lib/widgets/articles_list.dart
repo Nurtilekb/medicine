@@ -6,6 +6,7 @@ import 'package:medicine1/ontapWidgets/descrip_bolezn.dart';
 import 'package:provider/provider.dart';
 
 import '../model/them_model.dart';
+import '../ontapWidgets/articles_descript.dart';
 
 class ArcticList extends StatelessWidget {
   const ArcticList({super.key});
@@ -31,7 +32,7 @@ class ArcticList extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const ArcticList(),
+                      builder: (context) => const ArcFirst (),
                     ));
               },
               child: const GridWidget(

@@ -6,7 +6,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 class Listbeck extends ChangeNotifier {
   List<ListModel> get mymodel => _filteredData.isEmpty ? _mymodel : _filteredData;
   List<ListModel> _redData = [];
-
   List<ListModel> _filteredData = [];
   List<ListModel> get cardItem => List.unmodifiable(_redData.isEmpty ?_cardItem:_redData);
   final List<ListModel> _cardItem = [];
@@ -78,12 +77,13 @@ class Listbeck extends ChangeNotifier {
           final data = _mymodel[i].glavtext.toLowerCase();
           if (data.contains(input)) {
             isContained = true;
-            break;
+           break;
           }
         }
         if (isContained) {
           _filteredData.add(_mymodel[i]);
-s        }
+          
+        }
       }
     }
     notifyListeners();
