@@ -105,7 +105,7 @@ class _ListTabviewState extends State<ListTabview> {
                                   ScaffoldMessenger.of(context)
                                       .showSnackBar(snackBar);
                                 },
-                                icon: const Icon(Icons.star)) ],
+                                icon: const Icon( Icons.bookmark_border)) ],
                       )),
                 )
               ]);

@@ -159,7 +159,9 @@ class _DropdownButtonExampleState extends State<DropdownButtonExample> {
 
   void loadlang() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    selectedValue = prefs.getString('language') ?? 'Русский';
+    setState(() {
+  selectedValue = prefs.getString('language') ?? 'Русский';
+});
   }
 
   @override

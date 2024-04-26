@@ -110,7 +110,7 @@ class _NavBarrState extends State<NavBarr> {
           label: AppLocalizations.of(context)?.home1 ?? 'home',
         ),
         BottomNavigationBarItem(
-          icon: const Icon(Icons.star),
+          icon: const Icon( Icons.bookmark_border),
           label: AppLocalizations.of(context)?.favorites ?? 'favorites',
         ),
         BottomNavigationBarItem(
