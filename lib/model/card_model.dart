@@ -9,7 +9,7 @@ class Listbeck extends ChangeNotifier {
   List<ListModel> _filteredData = [];
   List<ListModel> get cardItem => List.unmodifiable(_redData.isEmpty ?_cardItem:_redData);
   final List<ListModel> _cardItem = [];
-
+ 
 
 
 
@@ -22,6 +22,7 @@ class Listbeck extends ChangeNotifier {
       print('Элемент уже в избранном');
     }
   }
+
 
 
   void removeFromFavorites(int index) {

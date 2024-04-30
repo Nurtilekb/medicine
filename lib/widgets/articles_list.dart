@@ -13,7 +13,7 @@ class ArcticList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text('This is a new articles for today',style: ConstStyle.nazvonke,),
+        appBar: AppBar(title: const Text('This is a new articles for today',style: ConstStyle.nazvonke,),
           backgroundColor: Provider.of<ThemeModel>(context).toolColor,
           toolbarHeight: 30.h,
         ),
@@ -27,7 +27,7 @@ class ArcticList extends StatelessWidget {
               crossAxisCount: 1), //по горизонтали число виджетов
           itemBuilder: (BuildContext context, int index) {
             return Column(
-              children: [SizedBox(height: 10,),
+              children: [const SizedBox(height: 10,),
                 InkWell(
                   onTap: () {
                     Navigator.push(
@@ -64,10 +64,10 @@ class GridWidget extends StatelessWidget with ChangeNotifier {
     return Container(
 
       decoration: BoxDecoration(
-         color:Color.fromARGB(223, 25, 194, 174), borderRadius: BorderRadius.circular(9)),
+         color:const Color.fromARGB(223, 25, 194, 174), borderRadius: BorderRadius.circular(9)),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
-        children: [SizedBox(height: 3,),
+        children: [const SizedBox(height: 3,),
           ClipRRect(
             borderRadius: BorderRadius.circular(9),
             child: Image.network(

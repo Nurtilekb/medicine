@@ -14,12 +14,10 @@ class ArticleScreen extends StatelessWidget {
   }) : super(key: key);
 
 
-  Future<void> _launchInBrowser(String url) async {}
-
+ 
   @override
   Widget build(BuildContext context) {
  
-   
 
     String swipeDirection = '';
     return Scaffold(
@@ -30,39 +28,42 @@ class ArticleScreen extends StatelessWidget {
             onPressed: () => showModalBottomSheet<void>(
                 context: context,
                 isScrollControlled: true,
-                shape: RoundedRectangleBorder(
+                shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.vertical(
                     top: Radius.circular(20),
                   ),
                 ),
                 backgroundColor: Theme.of(context).primaryColorLight,
-                builder: (context) {return Container(color: Colors.red,);
+                builder: (context) {return SafeArea(child: Container(
+                  height: 300,
+                  width: 200,
+                  color: Colors.blue,child: const AnimatedIcon(icon:AnimatedIcons.pause_play, progress:kAlwaysDismissedAnimation),));
                 }),
-            icon: Icon(
+            icon: const Icon(
               Icons.format_size_outlined,
             ),
           ),
           IconButton(
             onPressed: () {},
-            icon: Icon(
+            icon: const Icon(
               Icons.bookmark_border,
             ),
           ),
           IconButton(
             onPressed: () {},
-            icon: Icon(
+            icon: const Icon(
               Icons.star_border_outlined,
             ),
           ),
           IconButton(
             onPressed: () {},
-            icon: Icon(
+            icon: const Icon(
               Icons.share_outlined,
             ),
           ),
           IconButton(
             onPressed: () {},
-            icon: Icon(
+            icon: const Icon(
               Icons.more_horiz_outlined,
             ),
           ),
@@ -91,28 +92,28 @@ class ArticleScreen extends StatelessWidget {
           }
         },
         child: Container(
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           child: SingleChildScrollView(
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               InkWell(
-                onTap: () => _launchInBrowser('ec'),
+                onTap: (){print('Basyldyy');},
                 child:
                     Text('Zuby', style: Theme.of(context).textTheme.headline1),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Text(
                 'vce pro tvoi zuby mojo uznat clicay syuda',
                 style: Theme.of(context).textTheme.subtitle2,
               ),
-              SizedBox(height: 25),
+              const SizedBox(height: 25),
               Image.network(imagePath),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Text(
                 nadpis,
                 style: Theme.of(context).textTheme.bodyText1,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               Row(
@@ -124,13 +125,13 @@ class ArticleScreen extends StatelessWidget {
                         decoration: BoxDecoration(
                           border: Border.all(
                               color: Theme.of(context).primaryColorLight),
-                          borderRadius: BorderRadius.all(Radius.circular(5)),
+                          borderRadius: const BorderRadius.all(Radius.circular(5)),
                         ),
                         height: 55,
-                        padding: EdgeInsets.all(10),
+                        padding: const EdgeInsets.all(10),
                         margin:
-                            EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-                        child: Center(
+                            const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+                        child: const Center(
                           child: Text(
                             'SHARE',
                             textAlign: TextAlign.center,
@@ -145,18 +146,18 @@ class ArticleScreen extends StatelessWidget {
                   ),
                   Expanded(
                     child: InkWell(
-                      onTap: () => _launchInBrowser('wecw',),
+                      onTap: (){print('VISIT WEBSITE');},
                       child: Container(
                         decoration: BoxDecoration(
                           border: Border.all(
                               color: Theme.of(context).primaryColorLight),
-                          borderRadius: BorderRadius.all(Radius.circular(5)),
+                          borderRadius: const BorderRadius.all(Radius.circular(5)),
                         ),
                         height: 55,
-                        padding: EdgeInsets.all(10),
+                        padding: const EdgeInsets.all(10),
                         margin:
-                            EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-                        child: Center(
+                            const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+                        child: const Center(
                           child: Text(
                             'VISIT WEBSITE',
                             textAlign: TextAlign.center,

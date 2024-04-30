@@ -1,0 +1,1 @@
+ /Users/user/medicine1/.dart_tool/flutter_build/0c5e5ff99913f144eaabd38ac9e0aee1/native_assets.yaml: 
