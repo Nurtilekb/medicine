@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 
 import '../costants/text_style.dart';
 import '../model/card_model.dart';
-import 'search_tme.dart';
+import 'search_name_widget.dart';
 
 class ListTabview extends StatefulWidget {
   const ListTabview({super.key});

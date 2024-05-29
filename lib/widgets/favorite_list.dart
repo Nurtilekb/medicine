@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 import '../costants/text_style.dart';
 import '../model/card_model.dart';
 import '../ontapWidgets/descrip_bolezn.dart';
-import 'search_tme.dart';
+import 'search_name_widget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class FavList extends StatefulWidget {

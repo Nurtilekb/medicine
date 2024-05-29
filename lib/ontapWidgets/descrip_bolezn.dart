@@ -26,9 +26,9 @@ class Dopkaprobolez extends StatelessWidget {
   Widget build(BuildContext context) {
     var snackBar =
         SnackBar(content: Text(AppLocalizations.of(context)!.snakbartitle1));
-final colorAli=Provider.of<ThemeModel>(context).scafColor;
+final colorAli=Provider.of<ThemeModel>(context);
     return Scaffold(
-      appBar: AppBar(backgroundColor: colorAli,
+      appBar: AppBar(backgroundColor: colorAli.scafColor,
       scrolledUnderElevation:0,elevation: 0,
         title: Text(
           text1,
@@ -36,7 +36,7 @@ final colorAli=Provider.of<ThemeModel>(context).scafColor;
         ),
         actions: [
           CircleAvatar(
-            backgroundColor: Color(0xFF161616),
+            backgroundColor: colorAli.sohrColor,
             child: IconButton(
                 onPressed: () {
                   Provider.of<Listbeck>(context, listen: false)
@@ -73,7 +73,7 @@ final colorAli=Provider.of<ThemeModel>(context).scafColor;
                   Text(text1,style:TextStyle(fontFamily: 'Semibold.ttf',fontSize: 32,fontWeight: FontWeight.w600)),
                   Text(
                     text2,
-                    style: const TextStyle(fontSize: 20,
+                    style: const TextStyle(fontSize: 20,fontFamily: 'Semibold.ttf'
                      ),
                   ),
                 ],

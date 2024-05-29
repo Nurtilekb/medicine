@@ -10,6 +10,7 @@ class ThemeModel extends ChangeNotifier {
   Color get toolColor =>_isDarkMode ? Colors.blueGrey : const Color.fromARGB(255, 90, 169, 175);
   Color get setingsColor => _isDarkMode ? const Color.fromARGB(255, 99, 114, 121) : const Color.fromARGB(210, 102, 202, 174);
   Color get vperediconCol => _isDarkMode ? Colors.white : Colors.black;
+   Color get sohrColor => _isDarkMode ? Color(0xFF161616) : Color(0xFFF5F6F7);
   bool get isDarkMode => _isDarkMode;
 
   Future<void> loadTheme() async {
