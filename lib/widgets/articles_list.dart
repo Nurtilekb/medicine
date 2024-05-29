@@ -1,93 +1,132 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:medicine1/model/card_model.dart';
+import 'package:medicine1/ontapWidgets/articles_descript.dart';
 import 'package:provider/provider.dart';
 
 import 'package:medicine1/costants/text_style.dart';
 
 import '../model/them_model.dart';
-import '../ontapWidgets/articles_descript.dart';
 
 class ArcticList extends StatelessWidget {
   const ArcticList({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final themprov = Provider.of<ThemeModel>(context);
     return Scaffold(
-        appBar: AppBar(title: const Text('This is a new articles for today',style: ConstStyle.nazvonke,),
-          backgroundColor: Provider.of<ThemeModel>(context).toolColor,
-          toolbarHeight: 30.h,
-        ),
-        body: GridView.builder(
-          itemCount: 5,
-          padding: EdgeInsets.symmetric(horizontal: 10.h),
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              childAspectRatio: 1.2, //сколько виджетов может быть в 1 экране
-
-              mainAxisSpacing: 15, //разделитель по вертикали
-              crossAxisCount: 1), //по горизонтали число виджетов
-          itemBuilder: (BuildContext context, int index) {
-            return Column(
-              children: [const SizedBox(height: 10,),
-                InkWell(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) =>  ArticleScreen( id: index, imagePath:'https://shrigramorganics.com/wp-content/uploads/2020/06/41g1S3Cp2L._SX425_.jpg', nadpis: 'Всем привет! Коллеги, подскажите пожалуйста какой есть способ для автоматического генерирования моделей для dart и php на основе одного конфига чтобы поддерживать соответствие клиента и сервера? Идея состоит в том чтобы один раз описать интерфейс для сущности в конфиге и по этому конфигурации генерировать модель на PHP и Dart и в эти модели маппить соответственно Request и Response на php и Dart. Swagger CodeGen evttn нечто похожее, но модель для PHP выглядит на мой взгляд отвратительно: какой-то уродливый класс с сеттерами и сеттерами вместо простой DTOшки',
-                ),
-                        ));
-                  },
-                  child:  GridWidget(
-                    url:
-                        'https://shrigramorganics.com/wp-content/uploads/2020/06/41g1S3Cp2L._SX425_.jpg',
-                    text:
-                        'Всем привет! Коллеги, подскажите пожалуйста какой есть способ для автоматического генерирования моделей для dart и php на основе одного конфига чтобы поддерживать соответствие клиента и сервера? Идея состоит в том чтобы один раз описать интерфейс для сущности в конфиге и по этому конфигурации генерировать модель на PHP и Dart и в эти модели маппить соответственно Request и Response на php и Dart. Swagger CodeGen evttn нечто похожее, но модель для PHP выглядит на мой взгляд отвратительно: какой-то уродливый класс с сеттерами и сеттерами вместо простой DTOшки',
-                  ),
-                ),
-              ],
-            );
-          },
-        ));
-  }
-}
-
-class GridWidget extends StatelessWidget with ChangeNotifier {
-   GridWidget({
-    Key? key,
-    required this.url,
-    required this.text,
-  }) : super(key: key);
-  final String url;
-  final String text;
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-
-      decoration: BoxDecoration(
-         color:const Color.fromARGB(223, 25, 194, 174), borderRadius: BorderRadius.circular(9)),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [const SizedBox(height: 3,),
-          ClipRRect(
-            borderRadius: BorderRadius.circular(9),
-            child: Image.network(
-              fit: BoxFit.cover,
-              url,
-              height: 190.h,
-              width: 350.w,
-            ),
+        backgroundColor: themprov.scafColor,
+        appBar: AppBar(
+          backgroundColor: themprov.scafColor,
+          elevation: 0,
+          scrolledUnderElevation: 0,
+          toolbarHeight: 78.h,
+          title: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text('Блог', style: ConstStyle.vverh),
+            ],
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: Text(
-              text,
-              style: ConstStyle.settingstyle,
-              maxLines: 4,
-              overflow: TextOverflow.ellipsis,
-            ),
-          )
-        ],
-      ),
-    );
+        ),
+        body: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 10.w),
+          child: Consumer<Listbeck>(
+            builder: (context, listbeck, child) {
+              return ListView.builder(
+                itemCount: 5,
+                itemBuilder: (context, index) {
+                  return Column(
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const ArticleScreen(
+                                  id: 1,
+                                  imagePath: 'assets/images/perhot.jpeg',
+                                  nadpis:
+                                      'This is perhotbek and he need a shampoo',
+                                ),
+                              ));
+                        },
+                        child: Card(
+                          shadowColor: const Color(0xFF000000),
+                          color: themprov.cardColor,
+                          elevation:0.3,
+                          shape: RoundedRectangleBorder(
+                            side: BorderSide.none,
+                              borderRadius: BorderRadius.circular(12)),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: Container(
+                                  width: 358.w,
+                                  height: 104.h,
+                                  padding:  const EdgeInsets.symmetric(horizontal: 12,
+                                  vertical: 7),
+                                  child: Row(
+                                    children: [
+                                      ClipRRect(borderRadius:BorderRadius.circular(12),
+                                        child: Image.asset('assets/images/perhot.jpeg',
+                                            height:80.h,
+                                            width: 80.w,
+                                            fit: BoxFit.cover),
+                                      ),
+                                      const SizedBox(width: 10),
+                                       Expanded(
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [ const Text(
+                                              'Как лечить перхоть? ',
+                                              style: ConstStyle.nazvbolez,
+                                              overflow: TextOverflow.ellipsis,
+                                              maxLines: 1,
+                                            ),
+                                            const Text(
+                                              '5 способов устранить перхоть',
+                                              style: ConstStyle.nazvbolez,
+                                              overflow: TextOverflow.ellipsis,
+                                              maxLines: 1,
+                                            ),
+                                            SizedBox(height: 6.h),
+                                            Row(
+                                              children: [
+                                                const Text(
+                                                  'Maria Zhang',
+                                                  style: ConstStyle.descripbolez,
+                                                  overflow: TextOverflow.ellipsis,
+                                                  maxLines: 1,
+                                                ),
+                                                Container(height: 16.h,
+                                                width: 16.w,
+                                                  margin: EdgeInsets.only(left:25.w,right: 12.w), child: Image.asset('assets/images/time.png')),
+                                                  Text('5 min')
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      SizedBox(width: 25.w,)
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  );
+                },
+              );
+            },
+          ),
+        ));
   }
 }

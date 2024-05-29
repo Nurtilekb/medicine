@@ -104,7 +104,7 @@ abstract class AppLocalizations {
   /// No description provided for @hintText.
   ///
   /// In en, this message translates to:
-  /// **' Search...'**
+  /// **' Search'**
   String get hintText;
 
   /// No description provided for @home1.
@@ -134,13 +134,13 @@ abstract class AppLocalizations {
   /// No description provided for @language.
   ///
   /// In en, this message translates to:
-  /// **'Application language'**
+  /// **'Language'**
   String get language;
 
   /// No description provided for @theme.
   ///
   /// In en, this message translates to:
-  /// **'Theme'**
+  /// **'Dark theme'**
   String get theme;
 
   /// No description provided for @snakbartitle1.

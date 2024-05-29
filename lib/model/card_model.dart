@@ -150,27 +150,31 @@ List<ListModel> _mymodel = [
       id: 'item1',
       glavtext: 'Item 1 Title',
       doptext: 'blablablablablablablablablablablablablablabla',
-      imagePath: 'assets/images/bronhit.jpg'),
+      imagePath: 'assets/images/bronhit.png'),
   ListModel(
       id: 'item2',
-      glavtext: 'Glaznoy',
-      doptext: 'eto bolezn dihateasCSADClnih putey',
-      imagePath: 'assets/images/glaznoy.jpg'),
+      glavtext: 'Бесплодие',
+      doptext: """Мнение эксперта
+Бесплодие может ухудшить качество жизни женщины даже в том случае, если она не планирует рожать. Ряд патологий имеет тенденцию к прогрессированию, в результате чего возникают боли, нарушается гормональный фон, что сказывается на общем самочувствии, состоянии органов и систем, а также внешности. Частым последствием бесплодия у женщин являются психогенные расстройства в виде депрессии, повышенной тревожности. Около 60% браков распадаются из-за невозможности иметь ребенка.
+Не следует пытаться лечиться самостоятельно: принимать витамины, пить травы, антибиотики и гормональные препараты без назначения врача. Это может привести к эндокринному сбою, ускоренному развитию новообразований, усугублению состояния. Очень важно обратиться к врачу и выполнять все его рекомендации, чтобы стабилизировать работу репродуктивной системы.
+Калинина Наталья Анатольевна
+Врач-репродуктолог высшей категории, д.м.н., заведующая отделения ВРТ... """,
+      imagePath: 'assets/images/besplodie.png'),
   ListModel(
       id: 'item3',
       glavtext: 'Rakkkk',
       doptext: 'eto bolezn dihatQEW134134elnih putey',
-      imagePath: 'assets/images/rakkkk.jpg'),
+      imagePath: 'assets/images/boyrok.png'),
   ListModel(
       id: 'item4',
       glavtext: 'Skoliroliz',
       doptext: 'eto bolezn d1324124312424ihatelnih puteyакимоукпиопомкуамцоат ',
-      imagePath: 'assets/images/skoliroliz.jpg'),
+      imagePath: 'assets/images/hearth.png'),
   ListModel(
       id: 'itemqwdcm',
       glavtext: 'Item 1 Tceqwcdeqitle',
       doptext:
           'blablaqcdqwqrewvcjerfckmqlewkxlablablablablablablablablablablablabla',
-      imagePath: 'assets/images/rakkkk.jpg'),
+      imagePath: 'assets/images/gryzha.png'),
 ];
 

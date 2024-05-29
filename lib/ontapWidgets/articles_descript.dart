@@ -70,27 +70,6 @@ class ArticleScreen extends StatelessWidget {
         ],
       ),
       body: GestureDetector(
-        onHorizontalDragUpdate: (details) {
-          swipeDirection = details.delta.dx < 0 ? 'left' : 'right';
-        },
-        onHorizontalDragEnd: (details) {
-          print('id=$id');
-          if (swipeDirection == 'left') {
-            if (id == 2) {
-              Navigator.pop(context);
-              return;
-            }
-
-            
-          }
-          if (swipeDirection == 'right') {
-            if (id == 0) {
-              Navigator.pop(context);
-              return;
-            }
-         
-          }
-        },
         child: Container(
           padding: const EdgeInsets.all(10),
           child: SingleChildScrollView(
@@ -99,19 +78,19 @@ class ArticleScreen extends StatelessWidget {
               InkWell(
                 onTap: (){print('Basyldyy');},
                 child:
-                    Text('Zuby', style: Theme.of(context).textTheme.headline1),
+                    Text('Zuby', style: Theme.of(context).textTheme.displayLarge),
               ),
               const SizedBox(height: 10),
               Text(
                 'vce pro tvoi zuby mojo uznat clicay syuda',
-                style: Theme.of(context).textTheme.subtitle2,
+                style: Theme.of(context).textTheme.titleSmall,
               ),
               const SizedBox(height: 25),
-              Image.network(imagePath),
+              Image.asset(imagePath),
               const SizedBox(height: 20),
               Text(
                 nadpis,
-                style: Theme.of(context).textTheme.bodyText1,
+                style: Theme.of(context).textTheme.bodyLarge,
               ),
               const SizedBox(
                 height: 30,

@@ -8,29 +8,29 @@ class AppLocalizationsRu extends AppLocalizations {
   String get appTitle => 'Flutter i18n';
 
   @override
-  String get hintText => ' Поиск...';
+  String get hintText => ' Поиск';
 
   @override
-  String get home1 => 'Дом';
+  String get home1 => 'Главная';
 
   @override
-  String get favorites => 'Сохраненные';
+  String get favorites => 'Избранное';
 
   @override
-  String get articles => 'Статьи';
+  String get articles => 'Блог';
 
   @override
   String get settings => 'Настройки';
 
   @override
-  String get language => 'Язык приложения';
+  String get language => 'Язык';
 
   @override
-  String get theme => 'Тема';
+  String get theme => 'Темная тема';
 
   @override
-  String get snakbartitle1 => 'Вы добавили в Сохраненные';
+  String get snakbartitle1 => 'Вы добавили в Избранное';
 
   @override
-  String get snakbartitle2 => 'Вы удалили из Сохраненных';
+  String get snakbartitle2 => 'Вы удалили из Избранных';
 }

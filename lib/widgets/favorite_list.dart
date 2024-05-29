@@ -25,17 +25,18 @@ class _FavListState extends State<FavList> {
        final themprov=Provider.of<ThemeModel>(context);
 
 
-    return Scaffold(
-      appBar: AppBar(
-        toolbarHeight: 65.h,
-        actions: [
-          SizedBox(width: 10.w),
-        ],
-        backgroundColor: themprov.toolColor,
-        title:   SearchBar1(onTextChanged: _runFilter2),
-      ),
+    return Scaffold(backgroundColor: themprov.scafColor,
+      appBar: AppBar(backgroundColor: themprov.scafColor,
+      elevation: 0,
+      scrolledUnderElevation: 0,
+        toolbarHeight: 78.h,
+        title: Row(crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('Сохранненые',style: ConstStyle.vverh),
+          ],
+        ),  ),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 6.w),
+        padding: EdgeInsets.symmetric(horizontal: 10.w),
         child: Consumer<Listbeck>(
           builder: (context, listbeck, child) {
             var snackBar = SnackBar(
@@ -58,31 +59,32 @@ class _FavListState extends State<FavList> {
                               ),
                             ));
                     },
-                      child: Card(
+                      child: Card(shadowColor: Color(0xFF000000),
                         color: themprov.cardColor,
-                        elevation: 1,
-                        shape: RoundedRectangleBorder(
-                          side: const BorderSide(color: Colors.black),
-                          borderRadius: BorderRadius.circular(15),
+                        elevation: 5,
+                        shape: RoundedRectangleBorder(side: BorderSide.none,
+                          borderRadius: BorderRadius.circular(12),
                         ),
                         child: Row(
                           children: [
                             Expanded(
                               child: Container(
-                                width: 200,
-                                height: 100,
+                                width: 358.w,
+                              height: 87.h,
                                 padding: const EdgeInsets.all(10),
                                 child: Row(
                                   children: [
                                     Image.asset(item.imagePath,
-                                        height: 90,
-                                        width: 100,
+                                        height: 50.h,
+                                    width: 50.w,
                                         fit: BoxFit.cover),
                                     const SizedBox(width: 10),
                                     Expanded(
                                       child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
+                                         mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                         children: [
                                           Text(
                                             item.glavtext,
@@ -90,11 +92,18 @@ class _FavListState extends State<FavList> {
                                              overflow: TextOverflow.ellipsis,
                                             maxLines: 1,
                                           ),
-                                          Text(
-                                            item.doptext,
-                                            style: ConstStyle.descripbolez,
-                                            overflow: TextOverflow.ellipsis,
-                                            maxLines: 2,
+                                          Row(
+                                            children: [
+                                              Expanded(
+                                                child: Text(
+                                                  item.doptext,
+                                                  style: ConstStyle.descripbolez,
+                                                  overflow: TextOverflow.ellipsis,
+                                                  maxLines: 1,
+                                                ),
+                                              ),
+                                             
+                                            ],
                                           ),
                                         ],
                                       ),
@@ -124,10 +133,11 @@ class _FavListState extends State<FavList> {
         ),
       ),
     );
-  }void _runFilter2(String keyword) {
-
-      Provider.of<Listbeck>(context, listen: false).filtertfavlist(keyword);
-
-
   }
+  // void _runFilter2(String keyword) {
+
+  //     Provider.of<Listbeck>(context, listen: false).filtertfavlist(keyword);
+
+
+  // }
 }

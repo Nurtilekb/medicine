@@ -28,14 +28,16 @@ class _SearchBar1State extends State<SearchBar1> {
     return Container(
       decoration: BoxDecoration(
         color: themprov.searchColor,
-        border: Border.all(color: Colors.black, width: 1),
+       
         borderRadius: const BorderRadius.all(Radius.circular(8)),
       ),
-      height: 40.h,
-      width: 350.w,
+      height: 48.h,
+      width: 358.w,
       child: Row(
         children: [SizedBox(width: 10,),
-          Icon(Icons.search),
+         SizedBox(height:20.h,
+         width: 20.w,
+         child:  Image.asset('assets/images/poisk.png')),
           Expanded(
             child: TextFormField(
               controller: controller,
@@ -43,8 +45,8 @@ class _SearchBar1State extends State<SearchBar1> {
               decoration: InputDecoration(
                 border: InputBorder.none,
                 contentPadding:
-                    const EdgeInsets.only(bottom: 10.0, left: 8, right: 8, top: 1),
-                hintStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                     EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
+                hintStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
                 hintText: AppLocalizations.of(context)!.hintText,
               ),
               onChanged:widget.onTextChanged ,

@@ -4,13 +4,13 @@
   "@appTitle": {
     "description": "Main application title"
   },
-  "hintText":" Search...",
+  "hintText":" Search",
   "home1":"Home",
   "favorites":"Favorites",
   "articles":"Articles",
   "settings":"settings",
-  "language":"Application language",
-  "theme":"Theme",
+  "language":"Language",
+  "theme":"Dark theme",
   "snakbartitle1":"You have added to Favorites",
   "snakbartitle2":"You have been removed from Favorites"
 }

@@ -8,29 +8,29 @@ class AppLocalizationsKy extends AppLocalizations {
   String get appTitle => 'Flutter i18n';
 
   @override
-  String get hintText => ' Издөө...';
+  String get hintText => ' Издөө';
 
   @override
-  String get home1 => 'Үй';
+  String get home1 => 'Башкы бет';
 
   @override
-  String get favorites => 'Сакталгандар';
+  String get favorites => 'Сүйүктүүлөр';
 
   @override
-  String get articles => 'Макалалар';
+  String get articles => 'Блог';
 
   @override
   String get settings => 'Орнотуулар';
 
   @override
-  String get language => 'Колдонмо тили';
+  String get language => 'Тили';
 
   @override
-  String get theme => 'Тема';
+  String get theme => 'Кара тема';
 
   @override
-  String get snakbartitle1 => 'Сиз Сакталгандарга коштуңуз';
+  String get snakbartitle1 => 'Сиз Сүйүктүүлөргө коштуңуз';
 
   @override
-  String get snakbartitle2 => 'Сиз Сакталгандардан чыгардыңыз';
+  String get snakbartitle2 => 'Сиз Сүйүктүүлөрдөн чыгардыңыз';
 }

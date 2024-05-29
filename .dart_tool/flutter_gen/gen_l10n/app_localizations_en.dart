@@ -8,7 +8,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get appTitle => 'Flutter i18nnnn';
 
   @override
-  String get hintText => ' Search...';
+  String get hintText => ' Search';
 
   @override
   String get home1 => 'Home';
@@ -23,10 +23,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get settings => 'settings';
 
   @override
-  String get language => 'Application language';
+  String get language => 'Language';
 
   @override
-  String get theme => 'Theme';
+  String get theme => 'Dark theme';
 
   @override
   String get snakbartitle1 => 'You have added to Favorites';
