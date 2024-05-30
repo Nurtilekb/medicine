@@ -97,10 +97,15 @@ class Dopkaprobolez extends StatelessWidget {
 7.Итог""",
                     style: ConstStyle.settingstyle,
                   ),
-                  SizedBox(height: 30.h,
-                    width: MediaQuery.of(context).size.width,),
-                  Text('Что такое грыжа?',style: ConstStyle.nazvonke,),
                   SizedBox(
+                    height: 30.h,
+                    width: MediaQuery.of(context).size.width,
+                  ),
+                  Text(
+                    'Что такое грыжа?',
+                    style: ConstStyle.nazvonke,
+                  ),
+                  Container(decoration: BoxDecoration(borderRadius:BorderRadius.circular(24)),
                     width: MediaQuery.of(context).size.width,
                     height: 300.h,
                     child: Image.asset(
