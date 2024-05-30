@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medicine1/model/them_model.dart';
@@ -34,7 +33,7 @@ class _SearchBar1State extends State<SearchBar1> {
       height: 48.h,
       width: 358.w,
       child: Row(
-        children: [SizedBox(width: 10,),
+        children: [const SizedBox(width: 10,),
          SizedBox(height:20.h,
          width: 20.w,
          child:  Image.asset('assets/images/poisk.png')),

@@ -8,10 +8,10 @@ class ArticleScreen extends StatelessWidget {
  final String nadpis;
 
   const ArticleScreen( {
-    Key? key,
+    super.key,
     required this.id,
     required this.imagePath, required this.nadpis,
-  }) : super(key: key);
+  });
 
 
  
@@ -19,7 +19,7 @@ class ArticleScreen extends StatelessWidget {
   Widget build(BuildContext context) {
  
 
-    String swipeDirection = '';
+
     return Scaffold(
       appBar: AppBar(
         title: null,
@@ -76,7 +76,7 @@ class ArticleScreen extends StatelessWidget {
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               InkWell(
-                onTap: (){print('Basyldyy');},
+                onTap: (){},
                 child:
                     Text('Zuby', style: Theme.of(context).textTheme.displayLarge),
               ),
@@ -125,7 +125,7 @@ class ArticleScreen extends StatelessWidget {
                   ),
                   Expanded(
                     child: InkWell(
-                      onTap: (){print('VISIT WEBSITE');},
+                      onTap: (){},
                       child: Container(
                         decoration: BoxDecoration(
                           border: Border.all(

@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medicine1/model/card_model.dart';
 import 'package:medicine1/ontapWidgets/articles_descript.dart';
 import 'package:provider/provider.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:medicine1/costants/text_style.dart';
 
 import '../model/them_model.dart';
@@ -26,7 +24,7 @@ class ArcticList extends StatelessWidget {
           title: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Блог', style: ConstStyle.vverh),
+              Text(AppLocalizations.of(context)!.articles, style: ConstStyle.vverh),
             ],
           ),
         ),
@@ -106,7 +104,7 @@ class ArcticList extends StatelessWidget {
                                                 Container(height: 16.h,
                                                 width: 16.w,
                                                   margin: EdgeInsets.only(left:25.w,right: 12.w), child: Image.asset('assets/images/time.png')),
-                                                  Text('5 min')
+                                                  const Text('5 min')
                                               ],
                                             ),
                                           ],

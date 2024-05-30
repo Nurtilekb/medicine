@@ -45,10 +45,10 @@ class _SettingListState extends State<SettingList> {
         elevation: 0,
         scrolledUnderElevation: 0,
         toolbarHeight: 78.h,
-        title: const Row(
+        title:  Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Настройки', style: ConstStyle.vverh),
+            Text( AppLocalizations.of(context)!.settings, style: ConstStyle.vverh),
           ],
         ),
       ),
@@ -112,7 +112,7 @@ class _SettingListState extends State<SettingList> {
                                                           ? const Color(
                                                             0xFFE6E6E6)
                                                         : const Color(0xFFC4C4CC),
-                                                        borderRadius:BorderRadius.only(topLeft:Radius.circular(6),
+                                                        borderRadius:const BorderRadius.only(topLeft:Radius.circular(6),
                                                         bottomLeft: Radius.circular(6))
                                                   ),
                                                     width: 175.w,
@@ -140,14 +140,14 @@ class _SettingListState extends State<SettingList> {
                                                           ? const Color(
                                                             0xFFE6E6E6)
                                                         : const Color(0xFFC4C4CC),
-                                                        borderRadius:BorderRadius.only(topRight:Radius.circular(6),
+                                                        borderRadius:const BorderRadius.only(topRight:Radius.circular(6),
                                                         bottomRight: Radius.circular(6))
                                                   ),
                                                       width: 175.w,
                                                       height: 26.h,
                                                       
                                                       child: const Center(
-                                                        child: const Text(
+                                                        child: Text(
                                                           'Русский',
                                                           style: TextStyle(
                                                               color:
@@ -193,7 +193,7 @@ class _SettingListState extends State<SettingList> {
                         ],
                       ),
                       const Spacer(),
-                      Container(
+                      SizedBox(
                           height: 18.h,
                           width: 18.w,
                           child: Image.asset('assets/images/vpered1.png',color: themeProvider.vperediconCol,))

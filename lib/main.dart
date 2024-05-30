@@ -7,14 +7,14 @@ import 'package:medicine1/widgets/listview_bld.dart';
 import 'package:medicine1/widgets/settings.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+
 
 import 'model/card_model.dart';
 import 'widgets/articles_list.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  SharedPreferences prefs = await SharedPreferences.getInstance();
+
 
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(create: (BuildContext context) => ThemeModel()),
@@ -25,7 +25,7 @@ void main() async {
 }
 
 class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -97,69 +97,67 @@ class NavBarr extends StatefulWidget {
 class _NavBarrState extends State<NavBarr> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: BottomNavigationBar(
-        backgroundColor: Provider.of<ThemeModel>(context).navbColor,
-        type: BottomNavigationBarType.fixed,
-        selectedItemColor: Color(0xFF03AF44),
-        unselectedItemColor: Colors.grey,
-        currentIndex: widget.selectedIndex,
-        onTap: widget.onitemtap,
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: SizedBox(
-              width: 18.w,
-              height: 21.h,
-              child: Image.asset(
-                widget.selectedIndex == 0
-                    ? 'assets/images/jilan2.png'
-                    : 'assets/images/jilan1.png',
-                fit: BoxFit.cover,
-              ),
+    return BottomNavigationBar(
+      backgroundColor: Provider.of<ThemeModel>(context).navbColor,
+      type: BottomNavigationBarType.fixed,
+      selectedItemColor: const Color(0xFF03AF44),
+      unselectedItemColor: Colors.grey,
+      currentIndex: widget.selectedIndex,
+      onTap: widget.onitemtap,
+      items: <BottomNavigationBarItem>[
+        BottomNavigationBarItem(
+          icon: SizedBox(
+            width: 18.w,
+            height: 21.h,
+            child: Image.asset(
+              widget.selectedIndex == 0
+                  ? 'assets/images/jilan2.png'
+                  : 'assets/images/jilan1.png',
+              fit: BoxFit.cover,
             ),
-            label: AppLocalizations.of(context)?.home1 ?? 'home',
           ),
-          BottomNavigationBarItem(
-            icon: SizedBox(
-              height: 18.75.h,
-              width: 13.5.w,
-              child: Image.asset(
-                widget.selectedIndex == 1
-                    ? 'assets/images/sohr2.png'
-                    : 'assets/images/sohr.png',
-                fit: BoxFit.cover,
-              ),
+          label: AppLocalizations.of(context)?.home1 ?? 'Главная',
+        ),
+        BottomNavigationBarItem(
+          icon: SizedBox(
+            height: 18.75.h,
+            width: 13.5.w,
+            child: Image.asset(
+              widget.selectedIndex == 1
+                  ? 'assets/images/sohr2.png'
+                  : 'assets/images/sohr.png',
+              fit: BoxFit.cover,
             ),
-            label: AppLocalizations.of(context)?.favorites ?? 'favorites',
           ),
-          BottomNavigationBarItem(
-            icon: SizedBox(
-              width: 18.w,
-              height: 18.75.h,
-              child: Image.asset(
-                widget.selectedIndex == 2
-                    ? 'assets/images/kitep2.png'
-                    : 'assets/images/kitep.png',
-                fit: BoxFit.cover,
-              ),
+          label: AppLocalizations.of(context)?.favorites ?? 'Сохраненное',
+        ),
+        BottomNavigationBarItem(
+          icon: SizedBox(
+            width: 18.w,
+            height: 18.75.h,
+            child: Image.asset(
+              widget.selectedIndex == 2
+                  ? 'assets/images/kitep2.png'
+                  : 'assets/images/kitep.png',
+              fit: BoxFit.cover,
             ),
-            label: AppLocalizations.of(context)?.articles ?? 'articles',
           ),
-          BottomNavigationBarItem(
-            icon: SizedBox(
-              width: 19.62.w,
-              height: 19.62.h,
-              child: Image.asset(
-                widget.selectedIndex == 3
-                    ? 'assets/images/nastroyki2.png'
-                    : 'assets/images/nastroyki.png',
-                fit: BoxFit.cover,
-              ),
+          label: AppLocalizations.of(context)?.articles ?? 'Блог',
+        ),
+        BottomNavigationBarItem(
+          icon: SizedBox(
+            width: 19.62.w,
+            height: 19.62.h,
+            child: Image.asset(
+              widget.selectedIndex == 3
+                  ? 'assets/images/nastroyki2.png'
+                  : 'assets/images/nastroyki.png',
+              fit: BoxFit.cover,
             ),
-            label: AppLocalizations.of(context)?.settings ?? 'settings',
           ),
-        ],
-      ),
+          label: AppLocalizations.of(context)?.settings ?? 'Настройки',
+        ),
+      ],
     );
   }
 }

@@ -7,7 +7,6 @@ import 'package:provider/provider.dart';
 import '../costants/text_style.dart';
 import '../model/card_model.dart';
 import '../ontapWidgets/descrip_bolezn.dart';
-import 'search_name_widget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class FavList extends StatefulWidget {
@@ -32,7 +31,7 @@ class _FavListState extends State<FavList> {
         toolbarHeight: 78.h,
         title: Row(crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Сохранненые',style: ConstStyle.vverh),
+            Text( AppLocalizations.of(context)!.favorites,style: ConstStyle.vverh),
           ],
         ),  ),
       body: Padding(
@@ -59,7 +58,7 @@ class _FavListState extends State<FavList> {
                               ),
                             ));
                     },
-                      child: Card(shadowColor: Color(0xFF000000),
+                      child: Card(shadowColor: const Color(0xFF000000),
                         color: themprov.cardColor,
                         elevation: 5,
                         shape: RoundedRectangleBorder(side: BorderSide.none,
