@@ -78,14 +78,19 @@ class ArticleScreen extends StatelessWidget {
             SliverStickyHeader.builder(
               builder: (BuildContext context, SliverStickyHeaderState state) {
                 return Container(
+                  decoration: BoxDecoration(
+                      color: Provider.of<ThemeModel>(context).cardColor,
+                      borderRadius: BorderRadius.circular(24)),
+                  width: MediaQuery.of(context).size.width,
+                  height: 88.h,
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10.0),
                     child: Row(
-                      children: [CircleAvatar(radius: 24,
+                      children: [const CircleAvatar(radius: 24,
                        backgroundImage:  NetworkImage('https://miro.medium.com/v2/resize:fit:1400/1*QkARauvoXCFth85b5CPROw.jpeg'),
                       ),
                       SizedBox(width: 10.w),
-                      Expanded(
+                      const Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -98,11 +103,6 @@ class ArticleScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-                  decoration: BoxDecoration(
-                      color: Color(0xFF1C1C1E),
-                      borderRadius: BorderRadius.circular(24)),
-                  width: MediaQuery.of(context).size.width,
-                  height: 88.h,
                 );
               },
             ),

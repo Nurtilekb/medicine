@@ -125,6 +125,25 @@ class Dopkaprobolez extends StatelessWidget {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 class DescriptOoru extends StatefulWidget {
   const DescriptOoru({
     Key? key,
@@ -256,10 +275,10 @@ class _DescriptOoruState extends State<DescriptOoru> {
                       children: [
                         SizedBox(
                           width: MediaQuery.of(context).size.width,
-                          height: 300.h,
+                          height: 212.h,
                           child: Image.asset(
                               widget.imagepath,
-                            fit: BoxFit.cover,
+                            fit: BoxFit.contain,
                           ),
                         ),
                         SizedBox(height: 10.h),
