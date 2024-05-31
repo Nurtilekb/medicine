@@ -7,6 +7,7 @@ import 'package:medicine1/model/them_model.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+
 class Dopkaprobolez extends StatelessWidget {
   const Dopkaprobolez({
     super.key,
@@ -121,4 +122,32 @@ class Dopkaprobolez extends StatelessWidget {
       ),
     );
   }
+}
+
+
+
+
+List<SectionData> sections = [
+  SectionData(title: 'Section 1', items: [
+    ItemData(name: 'Item 1.1'),
+    ItemData(name: 'Item 1.2'),
+  ]),
+  SectionData(title: 'Section 2', items: [
+    ItemData(name: 'Item 2.1'),
+    ItemData(name: 'Item 2.2'),
+  ]),
+];
+
+
+class SectionData {
+  final String title;
+  final List<ItemData> items;
+
+  SectionData({required this.title, required this.items});
+}
+
+class ItemData {
+  final String name;
+
+  ItemData({required this.name});
 }

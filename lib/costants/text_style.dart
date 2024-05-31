@@ -9,5 +9,5 @@ abstract class ConstStyle{
     static const settingstyle2=TextStyle(color: Colors.black,fontSize:19,fontWeight: FontWeight.w500,fontFamily:" Semibold.ttf", );
   static const nazvonke=TextStyle(fontSize:25,fontWeight: FontWeight.w500 );
     static const descGlavText =TextStyle(fontFamily: 'Semibold.ttf',fontSize: 32,fontWeight: FontWeight.w600);
-
+ static const planStyle=TextStyle(fontSize:20,fontWeight: FontWeight.w900,fontFamily:" Semibold.ttf", );
 }

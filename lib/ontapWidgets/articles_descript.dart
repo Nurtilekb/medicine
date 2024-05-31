@@ -1,158 +1,152 @@
-
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_sticky_header/flutter_sticky_header.dart';
+import 'package:medicine1/costants/text_style.dart';
+import 'package:medicine1/model/card_model.dart';
+import 'package:medicine1/model/them_model.dart';
+import 'package:provider/provider.dart';
 
 class ArticleScreen extends StatelessWidget {
   final int id;
   final String imagePath;
-  
- final String nadpis;
+  final String nadpis1;
 
-  const ArticleScreen( {
+  final String nadpis2;
+
+  const ArticleScreen({
     super.key,
     required this.id,
-    required this.imagePath, required this.nadpis,
+    required this.imagePath,
+    required this.nadpis1,
+    required this.nadpis2,
   });
 
-
- 
   @override
   Widget build(BuildContext context) {
- 
-
+    final colorAli = Provider.of<ThemeModel>(context);
 
     return Scaffold(
       appBar: AppBar(
-        title: null,
+        backgroundColor: colorAli.scafColor,
+        scrolledUnderElevation: 0,
+        elevation: 0,
         actions: [
-          IconButton(
-            onPressed: () => showModalBottomSheet<void>(
-                context: context,
-                isScrollControlled: true,
-                shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.vertical(
-                    top: Radius.circular(20),
-                  ),
-                ),
-                backgroundColor: Theme.of(context).primaryColorLight,
-                builder: (context) {return SafeArea(child: Container(
-                  height: 300,
-                  width: 200,
-                  color: Colors.blue,child: const AnimatedIcon(icon:AnimatedIcons.pause_play, progress:kAlwaysDismissedAnimation),));
-                }),
-            icon: const Icon(
-              Icons.format_size_outlined,
-            ),
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.bookmark_border,
-            ),
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.star_border_outlined,
-            ),
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.share_outlined,
-            ),
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.more_horiz_outlined,
-            ),
-          ),
+          CircleAvatar(
+              backgroundColor: colorAli.sohrColor,
+              child: const Icon(Icons.bookmark_border)),
+          SizedBox(width: 10.w)
         ],
       ),
-      body: GestureDetector(
-        child: Container(
-          padding: const EdgeInsets.all(10),
-          child: SingleChildScrollView(
-            child:
-                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              InkWell(
-                onTap: (){},
-                child:
-                    Text('Zuby', style: Theme.of(context).textTheme.displayLarge),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: CustomScrollView(
+          slivers: [
+            new SliverStickyHeader(
+              header: SizedBox(
+                width: MediaQuery.of(context).size.width,
+                height: 1.h,
+                child: const Text('wefvwevw'),
               ),
-              const SizedBox(height: 10),
-              Text(
-                'vce pro tvoi zuby mojo uznat clicay syuda',
-                style: Theme.of(context).textTheme.titleSmall,
-              ),
-              const SizedBox(height: 25),
-              Image.asset(imagePath),
-              const SizedBox(height: 20),
-              Text(
-                nadpis,
-                style: Theme.of(context).textTheme.bodyLarge,
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              Row(
-                children: [
-                  Expanded(
-                    child: InkWell(
-                      onTap: () {},
-                      child: Container(
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                              color: Theme.of(context).primaryColorLight),
-                          borderRadius: const BorderRadius.all(Radius.circular(5)),
-                        ),
-                        height: 55,
-                        padding: const EdgeInsets.all(10),
-                        margin:
-                            const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-                        child: const Center(
-                          child: Text(
-                            'SHARE',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 15,
-                            ),
-                          ),
+              sliver: SliverList(
+                delegate: SliverChildBuilderDelegate(
+                  (context, i) => Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width,
+                        height: 300.h,
+                        child: Image.asset(
+                          imagePath,
+                          fit: BoxFit.cover,
                         ),
                       ),
+                      Text(
+                        nadpis1,
+                        style: ConstStyle.descGlavText,
+                      ),
+                      Wrap(children: [
+                        Text(
+                          nadpis2,
+                          style: ConstStyle.settingstyle,
+                        )
+                      ]),
+                    ],
+                  ),
+                  childCount: 1,
+                ),
+              ),
+            ),
+            SliverStickyHeader(
+              header: Container(
+                height: 60.0,
+                alignment: Alignment.centerLeft,
+                child: const Text('Plan',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w900,
+                      fontFamily: " Semibold.ttf",
+                    )),
+              ),
+              sliver: SliverList(
+                delegate: SliverChildBuilderDelegate(
+                  (context, i) => Container(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        TextButton(
+                            onPressed: () {},
+                            child: const Text('1.Что такое грыжа?')),
+                        const Wrap(
+                          children: [
+                            Text('cwcwwcwccwcwwcwcwwwcwwcdcdcdcdcdcdcdcdcdcd')
+                          ],
+                        )
+                      ],
                     ),
                   ),
-                  Expanded(
-                    child: InkWell(
-                      onTap: (){},
-                      child: Container(
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                              color: Theme.of(context).primaryColorLight),
-                          borderRadius: const BorderRadius.all(Radius.circular(5)),
-                        ),
-                        height: 55,
-                        padding: const EdgeInsets.all(10),
-                        margin:
-                            const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-                        child: const Center(
-                          child: Text(
-                            'VISIT WEBSITE',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 15,
-                            ),
+                  childCount: 1,
+                ),
+              ),
+            ),
+            SliverStickyHeader(
+              header: Container(
+                height: 60.0,
+                alignment: Alignment.centerLeft,
+                child: const Text('Что такое перхоть',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w900,
+                      fontFamily: " Semibold.ttf",
+                    )),
+              ),
+              sliver: SliverList(
+                delegate: SliverChildBuilderDelegate(
+                  (context, i) => Container(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width,
+                          height: 300.h,
+                          child: Image.asset(
+                            imagePath,
+                            fit: BoxFit.cover,
                           ),
                         ),
-                      ),
+                        const Wrap(
+                          children: [
+                            const Text('cwcwwcwccwcwwcwcwwwcwwcdcdcdcdcdcdcdcdcdcd')
+                          ],
+                        ),
+                        const SizedBox(height: 20,)
+                      ],
                     ),
                   ),
-                ],
-              )
-            ]),
-          ),
+                  childCount: 1,
+                ),
+              ),
+            )
+          ],
         ),
       ),
     );

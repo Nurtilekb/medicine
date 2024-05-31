@@ -69,6 +69,7 @@ class _ListTabviewState extends State<ListTabview> {
                           Expanded(
                             child: InkWell(
                               onTap: () {
+                                
                     Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -159,4 +160,9 @@ Future<void> _refreshData() async {
   void _runFilter(String keyword) {
     Provider.of<Listbeck>(context, listen: false).filterData(keyword);
   }
+  
 }
+
+
+
+

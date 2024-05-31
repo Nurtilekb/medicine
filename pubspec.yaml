@@ -44,6 +44,8 @@ dependencies:
   search_page: ^2.3.0
   dropdown_button2: ^2.3.9
   intl_utils: ^2.8.7
+  flutter_sticky_header: ^0.6.5
+
   
 
 dev_dependencies:

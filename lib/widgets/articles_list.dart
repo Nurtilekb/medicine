@@ -43,9 +43,10 @@ class ArcticList extends StatelessWidget {
                               context,
                               MaterialPageRoute(
                                 builder: (context) => const ArticleScreen(
+                                  nadpis1: 'Как лечить перхоть?',
                                   id: 1,
                                   imagePath: 'assets/images/perhot.jpeg',
-                                  nadpis:
+                                  nadpis2:
                                       'This is perhotbek and he need a shampoo',
                                 ),
                               ));
