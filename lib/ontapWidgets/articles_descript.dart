@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_sticky_header/flutter_sticky_header.dart';
 import 'package:medicine1/costants/text_style.dart';
-import 'package:medicine1/model/card_model.dart';
 import 'package:medicine1/model/them_model.dart';
 import 'package:provider/provider.dart';
 
@@ -76,9 +75,40 @@ class ArticleScreen extends StatelessWidget {
                 ),
               ),
             ),
+            SliverStickyHeader.builder(
+              builder: (BuildContext context, SliverStickyHeaderState state) {
+                return Container(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                    child: Row(
+                      children: [CircleAvatar(radius: 24,
+                       backgroundImage:  NetworkImage('https://miro.medium.com/v2/resize:fit:1400/1*QkARauvoXCFth85b5CPROw.jpeg'),
+                      ),
+                      SizedBox(width: 10.w),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                          Text('Maria Chang',style: ConstStyle.descripbolez,),
+                          Text('Привет! Меня зовут Maria и я спец в традиционной медицине',style: ConstStyle.mariachang,maxLines: 2,),
+                        ],),
+                      )
+                      
+                      ],
+                    ),
+                  ),
+                  decoration: BoxDecoration(
+                      color: Color(0xFF1C1C1E),
+                      borderRadius: BorderRadius.circular(24)),
+                  width: MediaQuery.of(context).size.width,
+                  height: 88.h,
+                );
+              },
+            ),
             SliverStickyHeader(
               header: Container(
-                height: 60.0,
+                height: 60.h,
                 alignment: Alignment.centerLeft,
                 child: const Text('Plan',
                     style: TextStyle(
@@ -95,10 +125,16 @@ class ArticleScreen extends StatelessWidget {
                       children: [
                         TextButton(
                             onPressed: () {},
-                            child: const Text('1.Что такое грыжа?')),
+                            child: const Text(
+                              '1.Что такое  перхоть?',
+                              style: ConstStyle.descripbolez,
+                            )),
                         const Wrap(
                           children: [
-                            Text('cwcwwcwccwcwwcwcwwwcwwcdcdcdcdcdcdcdcdcdcd')
+                            Text(
+                              '',
+                              style: ConstStyle.settingstyle,
+                            )
                           ],
                         )
                       ],
@@ -112,7 +148,7 @@ class ArticleScreen extends StatelessWidget {
               header: Container(
                 height: 60.0,
                 alignment: Alignment.centerLeft,
-                child: const Text('Что такое перхоть',
+                child: const Text('Что такое перхоть?',
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.w900,
@@ -125,20 +161,29 @@ class ArticleScreen extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width,
-                          height: 300.h,
-                          child: Image.asset(
-                            imagePath,
-                            fit: BoxFit.cover,
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(24),
+                          child: SizedBox(
+                            width: MediaQuery.of(context).size.width,
+                            height: 212.h,
+                            child: Image.asset(
+                              imagePath,
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ),
+                        SizedBox(height: 10.h),
                         const Wrap(
                           children: [
-                            const Text('cwcwwcwccwcwwcwcwwwcwwcdcdcdcdcdcdcdcdcdcd')
+                            const Text(
+                              ' Tuda syuda bla bla bla',
+                              style: ConstStyle.settingstyle,
+                            )
                           ],
                         ),
-                        const SizedBox(height: 20,)
+                        const SizedBox(
+                          height: 20,
+                        )
                       ],
                     ),
                   ),

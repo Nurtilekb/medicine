@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_sticky_header/flutter_sticky_header.dart';
+import 'package:provider/provider.dart';
 
 import 'package:medicine1/costants/text_style.dart';
 import 'package:medicine1/model/card_model.dart';
 import 'package:medicine1/model/them_model.dart';
-import 'package:provider/provider.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
 
 class Dopkaprobolez extends StatelessWidget {
   const Dopkaprobolez({
@@ -125,29 +125,160 @@ class Dopkaprobolez extends StatelessWidget {
 }
 
 
-
-
-List<SectionData> sections = [
-  SectionData(title: 'Section 1', items: [
-    ItemData(name: 'Item 1.1'),
-    ItemData(name: 'Item 1.2'),
-  ]),
-  SectionData(title: 'Section 2', items: [
-    ItemData(name: 'Item 2.1'),
-    ItemData(name: 'Item 2.2'),
-  ]),
-];
-
-
-class SectionData {
-  final String title;
-  final List<ItemData> items;
-
-  SectionData({required this.title, required this.items});
+class DescriptOoru extends StatefulWidget {
+  const DescriptOoru({
+    Key? key,
+    required this.selectedIndex,
+    required this.text1,
+    required this.text2,
+    required this.imagepath,
+  }) : super(key: key);
+  final int selectedIndex;
+  final String text1;
+  final String text2;
+  final String imagepath;
+  @override
+  State<DescriptOoru> createState() => _DescriptOoruState();
 }
 
-class ItemData {
-  final String name;
+class _DescriptOoruState extends State<DescriptOoru> {
+  
+  @override
+  Widget build(BuildContext context) {
+     final colorAli = Provider.of<ThemeModel>(context);
+       var snackBar =
+        SnackBar(content: Text(AppLocalizations.of(context)!.snakbartitle1));
+    return Scaffold(
+      appBar:  AppBar(
+        backgroundColor: colorAli.scafColor,
+        scrolledUnderElevation: 0,
+        elevation: 0,
+        actions: [
+          CircleAvatar(
+            backgroundColor: colorAli.sohrColor,
+            child: IconButton(
+                onPressed: () {
+                  Provider.of<Listbeck>(context, listen: false)
+                      .addToFavorites(widget.selectedIndex);
 
-  ItemData({required this.name});
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                },
+                icon: const Icon(Icons.bookmark_border)),
+          ),
+          SizedBox(width: 10.w)
+        ],
+      ),
+      body: Padding(padding: EdgeInsets.all(10),
+      child:  CustomScrollView(
+          slivers: [
+            new SliverStickyHeader(
+              header: SizedBox(
+                width: MediaQuery.of(context).size.width,
+                height: 1.h,
+              ),
+              sliver: SliverList(
+                delegate: SliverChildBuilderDelegate(
+                  (context, i) => Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width,
+                        height: 300.h,
+                        child: Image.asset(
+                          widget.imagepath,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      Text(
+                          widget.text1,
+                        style: ConstStyle.descGlavText,
+                      ),
+                      Wrap(children: [
+                        Text(
+                            widget.text2,
+                          style: ConstStyle.settingstyle,
+                        )
+                      ]),
+                    ],
+                  ),
+                  childCount: 1,
+                ),
+              ),
+            ),
+            SliverStickyHeader(
+              header: Container(
+                height: 60.0,
+                alignment: Alignment.centerLeft,
+                child: const Text('Plan',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w900,
+                      fontFamily: " Semibold.ttf",
+                    )),
+              ),
+              sliver: SliverList(
+                delegate: SliverChildBuilderDelegate(
+                  (context, i) => Container(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        TextButton(
+                            onPressed: () {},
+                            child: const Text('1.Что такое грыжа?')),
+                        const Wrap(
+                          children: [
+                            Text('cwcwwcwccwcwwcwcwwwcwwcdcdcdcdcdcdcdcdcdcd',style: ConstStyle.settingstyle,)
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                  childCount: 1,
+                ),
+              ),
+            ),
+            SliverStickyHeader(
+              header: Container(
+                height: 60.0,
+                alignment: Alignment.centerLeft,
+                child: const Text('Что такое перхоть?',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w900,
+                      fontFamily: " Semibold.ttf",
+                    )),
+              ),
+              sliver: SliverList(
+                delegate: SliverChildBuilderDelegate(
+                  (context, i) => Container(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width,
+                          height: 300.h,
+                          child: Image.asset(
+                              widget.imagepath,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        SizedBox(height: 10.h),
+                        const Wrap(
+                          children: [
+                            const Text('Грыжа – это состояние, при котором внутренний орган или ткань выступают за пределы своего обычного местоположения через слабые участки в окружающих их тканях или мышцах. Она может возникнуть в различных частях тела, но чаще всего встречается в области брюшной стенки. Грыжи могут быть вызваны различными факторами, включая слабость мышц, травмы или повышенное внутреннее давление.',style: ConstStyle.settingstyle)
+                          ],
+                        ),
+                        const SizedBox(height: 20,)
+                      ],
+                    ),
+                  ),
+                  childCount: 1,
+                ),
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
 }

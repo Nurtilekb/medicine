@@ -73,7 +73,7 @@ class _ListTabviewState extends State<ListTabview> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => Dopkaprobolez(
+                          builder: (context) => DescriptOoru(
                             text1: item.glavtext,
                             imagepath: item.imagePath,
                             text2: item.doptext,
